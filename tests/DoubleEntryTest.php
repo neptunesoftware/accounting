@@ -11,35 +11,39 @@ use Scottlaurent\Accounting\Models\JournalTransaction;
  */
 class DoubleEntryTest extends BaseTest
 {
-	
-	/**
-	 * @expectedException \Scottlaurent\Accounting\Exceptions\InvalidJournalMethod
-	 */
+
+    /**
+     *
+     */
 	public function testMakingSureWeOnlySendDebitOrCreditCommands() {
+        $this->expectException(\Scottlaurent\Accounting\Exceptions\InvalidJournalMethod::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'banana',100);
 	}
-	
-	/**
-	 * @expectedException \Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue
-	 */
+
+    /**
+     *
+     */
 	public function testMakingSureDoubleEntryValueIsNotZero() {
+        $this->expectException(\Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',0);
 	}
-	
-	/**
-	 * @expectedException \Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue
-	 */
+
+    /**
+     *
+     */
 	public function testMakingSureDoubleEntryValueIsNotNegative() {
+        $this->expectException(\Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',0);
 	}
-	
-	/**
-	 * @expectedException \Scottlaurent\Accounting\Exceptions\DebitsAndCreditsDoNotEqual
-	 */
+
+    /**
+     *
+     */
 	public function testMakingSureDoubleEntryCreditsAndDebitsMatch() {
+        $this->expectException(\Scottlaurent\Accounting\Exceptions\DebitsAndCreditsDoNotEqual::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',99.01);
 		$transaction_group->addDollarTransaction($this->company_ar_journal,'credit',99.00);
