@@ -16,7 +16,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 	/**
      * Setup the test environment.
      */
-    public function setUp()
+    public function setUp(): void
     {
 	    
         parent::setUp();
