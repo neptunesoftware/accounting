@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Scottlaurent\Accounting\Services\Interfaces;
+namespace Scottlaurent\Accounting\Interfaces;
 
 
 use Carbon\Carbon;

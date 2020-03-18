@@ -12,7 +12,7 @@ use Money\Currency;
 use Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue;
 use Scottlaurent\Accounting\Exceptions\InvalidJournalMethod;
 use Scottlaurent\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
-use Scottlaurent\Accounting\Services\Interfaces\AccountingServiceInterface;
+use Scottlaurent\Accounting\Interfaces\AccountingServiceInterface;
 
 /**
  * Class Accounting
