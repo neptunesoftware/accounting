@@ -25,5 +25,12 @@
         "psr-4": {
             "Scottlaurent\\Accounting\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NeptuneSoftware\\Accounting\\Services\\AccountingServiceProvider"
+            ]
+        }
     }
 }
