@@ -15,10 +15,10 @@ use NeptuneSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
 use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
 
 /**
- * Class Accounting
- * @package NeptuneSoftware\Accounting\Services
+ * Class AccountingService
+ * @package NeptuneSoftware\AccountingService\Services
  */
-class Accounting implements AccountingServiceInterface
+class AccountingService implements AccountingServiceInterface
 {
 
     /**
@@ -27,7 +27,7 @@ class Accounting implements AccountingServiceInterface
     protected $transctions_pending = [];
 
     /**
-     * @return Accounting
+     * @return AccountingService
      */
     public static function newDoubleEntryTransactionGroup(): AccountingServiceInterface
     {

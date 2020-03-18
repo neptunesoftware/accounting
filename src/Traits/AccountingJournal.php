@@ -6,7 +6,7 @@ use NeptuneSoftware\Accounting\Models\Journal;
 
 /**
  * Class AccountingJournal
- * @package NeptuneSoftware\Accounting\ModelTraits
+ * @package NeptuneSoftware\AccountingService\ModelTraits
  */
 trait AccountingJournal {
 	

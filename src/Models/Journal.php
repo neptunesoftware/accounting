@@ -9,7 +9,7 @@ use Carbon\Carbon;
 
 /**
  * Class Journal
- * @package NeptuneSoftware\Accounting
+ * @package NeptuneSoftware\AccountingService
  * @property    Money                  $balance
  * @property    string                 $currency
  * @property    Carbon                 $updated_at

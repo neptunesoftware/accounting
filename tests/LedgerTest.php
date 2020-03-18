@@ -3,7 +3,7 @@
 // ensure we load our base file (PHPStorm Bug when using remote interpreter )
 require_once ('BaseTest.php');
 
-use NeptuneSoftware\Accounting\Services\Accounting as AccountingService;
+use NeptuneSoftware\Accounting\Services\AccountingService as AccountingService;
 
 
 /**
