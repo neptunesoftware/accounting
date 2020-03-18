@@ -4,7 +4,7 @@ namespace NeptuneSoftware\Accounting\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
-use NeptuneSoftware\Accounting\Services\Accounting;
+use NeptuneSoftware\Accounting\Services\AccountingService;
 
 class AccountingServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class AccountingServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(AccountingServiceInterface::class, function ($app) {
-            return new Accounting();
+            return new AccountingService();
         });
     }
 }

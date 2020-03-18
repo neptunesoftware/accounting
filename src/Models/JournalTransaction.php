@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Ledger
  *
- * @package NeptuneSoftware\Accounting
+ * @package NeptuneSoftware\AccountingService
  * @property    int $journal_id
  * @property    int $debit
  * @property    int $credit
