@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "NeptuneSoftware\\Accounting\\Services\\AccountingServiceProvider"
+                "NeptuneSoftware\\Accounting\\Providers\\AccountingServiceProvider"
             ]
         }
     }

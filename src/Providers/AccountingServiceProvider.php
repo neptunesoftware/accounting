@@ -1,6 +1,6 @@
 <?php
 
-namespace NeptuneSoftware\Invoicable;
+namespace NeptuneSoftware\Invoicable\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Scottlaurent\Accounting\Services\Accounting;
