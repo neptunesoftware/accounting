@@ -1,22 +1,22 @@
 <?php
 
-namespace Scottlaurent\Accounting\Services;
+namespace NeptunSoftware\Accounting\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Scottlaurent\Accounting\Exceptions\TransactionCouldNotBeProcessed;
-use Scottlaurent\Accounting\Models\Journal;
+use NeptunSoftware\Accounting\Exceptions\TransactionCouldNotBeProcessed;
+use NeptunSoftware\Accounting\Models\Journal;
 use Money\Money;
 use Money\Currency;
 
-use Scottlaurent\Accounting\Exceptions\InvalidJournalEntryValue;
-use Scottlaurent\Accounting\Exceptions\InvalidJournalMethod;
-use Scottlaurent\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
-use Scottlaurent\Accounting\Interfaces\AccountingServiceInterface;
+use NeptunSoftware\Accounting\Exceptions\InvalidJournalEntryValue;
+use NeptunSoftware\Accounting\Exceptions\InvalidJournalMethod;
+use NeptunSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
+use NeptunSoftware\Accounting\Interfaces\AccountingServiceInterface;
 
 /**
  * Class Accounting
- * @package Scottlaurent\Accounting\Services
+ * @package NeptunSoftware\Accounting\Services
  */
 class Accounting implements AccountingServiceInterface
 {

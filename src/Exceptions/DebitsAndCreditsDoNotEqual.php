@@ -1,6 +1,6 @@
 <?php
 
-namespace Scottlaurent\Accounting\Exceptions;
+namespace NeptunSoftware\Accounting\Exceptions;
 
 class DebitsAndCreditsDoNotEqual extends BaseException {
 	
