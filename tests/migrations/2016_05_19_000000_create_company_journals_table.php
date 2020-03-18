@@ -15,7 +15,7 @@ class CreateCompanyJournalsTable extends Migration
     public function up()
     {
         Schema::create('company_journals', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->timestamps();
         });
