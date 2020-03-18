@@ -3,8 +3,8 @@
 // ensure we load our base file (PHPStorm Bug when using remote interpreter )
 require_once ('BaseTest.php');
 
-use NeptunSoftware\Accounting\Services\Accounting as AccountingService;
-use NeptunSoftware\Accounting\Models\JournalTransaction;
+use NeptuneSoftware\Accounting\Services\Accounting as AccountingService;
+use NeptuneSoftware\Accounting\Models\JournalTransaction;
 
 /**
  * Class LedgerTest
@@ -16,7 +16,7 @@ class DoubleEntryTest extends BaseTest
      *
      */
 	public function testMakingSureWeOnlySendDebitOrCreditCommands() {
-        $this->expectException(\NeptunSoftware\Accounting\Exceptions\InvalidJournalMethod::class);
+        $this->expectException(\NeptuneSoftware\Accounting\Exceptions\InvalidJournalMethod::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'banana',100);
 	}
@@ -25,7 +25,7 @@ class DoubleEntryTest extends BaseTest
      *
      */
 	public function testMakingSureDoubleEntryValueIsNotZero() {
-        $this->expectException(\NeptunSoftware\Accounting\Exceptions\InvalidJournalEntryValue::class);
+        $this->expectException(\NeptuneSoftware\Accounting\Exceptions\InvalidJournalEntryValue::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',0);
 	}
@@ -34,7 +34,7 @@ class DoubleEntryTest extends BaseTest
      *
      */
 	public function testMakingSureDoubleEntryValueIsNotNegative() {
-        $this->expectException(\NeptunSoftware\Accounting\Exceptions\InvalidJournalEntryValue::class);
+        $this->expectException(\NeptuneSoftware\Accounting\Exceptions\InvalidJournalEntryValue::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',0);
 	}
@@ -43,7 +43,7 @@ class DoubleEntryTest extends BaseTest
      *
      */
 	public function testMakingSureDoubleEntryCreditsAndDebitsMatch() {
-        $this->expectException(\NeptunSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual::class);
+        $this->expectException(\NeptuneSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual::class);
 		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',99.01);
 		$transaction_group->addDollarTransaction($this->company_ar_journal,'credit',99.00);

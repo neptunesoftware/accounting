@@ -1,6 +1,6 @@
 <?php
 
-namespace NeptunSoftware\Accounting\Exceptions;
+namespace NeptuneSoftware\Accounting\Exceptions;
 
 class TransactionCouldNotBeProcessed extends BaseException {
 	

@@ -5,7 +5,7 @@ use Faker\Factory as Faker;
 use Models\User;
 use Models\Account;
 use Models\CompanyJournal;
-use NeptunSoftware\Accounting\Models\Ledger;
+use NeptuneSoftware\Accounting\Models\Ledger;
 
 /**
  * Class BaseTest

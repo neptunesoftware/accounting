@@ -3,8 +3,8 @@
 namespace NeptuneSoftware\Invoicable\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use NeptunSoftware\Accounting\Interfaces\AccountingServiceInterface;
-use NeptunSoftware\Accounting\Services\Accounting;
+use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
+use NeptuneSoftware\Accounting\Services\Accounting;
 
 class AccountingServiceProvider extends ServiceProvider
 {

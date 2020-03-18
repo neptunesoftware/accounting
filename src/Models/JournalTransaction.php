@@ -1,13 +1,13 @@
 <?php
 
-namespace NeptunSoftware\Accounting\Models;
+namespace NeptuneSoftware\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Ledger
  *
- * @package NeptunSoftware\Accounting
+ * @package NeptuneSoftware\Accounting
  * @property    int $journal_id
  * @property    int $debit
  * @property    int $credit

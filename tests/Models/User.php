@@ -3,7 +3,7 @@
 namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
-use NeptunSoftware\Accounting\Traits\AccountingJournal;
+use NeptuneSoftware\Accounting\Traits\AccountingJournal;
 
 /**
  * Class User

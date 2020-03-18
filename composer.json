@@ -5,7 +5,7 @@
     "keywords": ["laravel", "accounting"],
     "authors": [
         {
-            "name": "NeptunSoftware",
+            "name": "NeptuneSoftware",
             "email": "info@neptunyazilim.com"
         }
     ],
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "NeptunSoftware\\Accounting\\": "src/"
+            "NeptuneSoftware\\Accounting\\": "src/"
         }
     },
     "extra": {

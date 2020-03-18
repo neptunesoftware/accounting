@@ -1,15 +1,15 @@
 <?php
 
 
-namespace NeptunSoftware\Accounting\Interfaces;
+namespace NeptuneSoftware\Accounting\Interfaces;
 
 
 use Carbon\Carbon;
 use Money\Money;
-use NeptunSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
-use NeptunSoftware\Accounting\Exceptions\InvalidJournalEntryValue;
-use NeptunSoftware\Accounting\Exceptions\InvalidJournalMethod;
-use NeptunSoftware\Accounting\Models\Journal;
+use NeptuneSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
+use NeptuneSoftware\Accounting\Exceptions\InvalidJournalEntryValue;
+use NeptuneSoftware\Accounting\Exceptions\InvalidJournalMethod;
+use NeptuneSoftware\Accounting\Models\Journal;
 
 interface AccountingServiceInterface
 {
