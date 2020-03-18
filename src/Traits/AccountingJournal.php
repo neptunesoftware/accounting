@@ -1,6 +1,6 @@
 <?php
 
-namespace NeptunSoftware\Accounting\ModelTraits;
+namespace NeptunSoftware\Accounting\Traits;
 
 use NeptunSoftware\Accounting\Models\Journal;
 
