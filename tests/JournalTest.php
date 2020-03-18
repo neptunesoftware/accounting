@@ -4,7 +4,7 @@
 require_once ('BaseTest.php');
 
 use Money\Money;
-use Scottlaurent\Accounting\Models\Journal;
+use NeptuneSoftware\Accounting\Models\Journal;
 
 use Models\User;
 use Models\Account;

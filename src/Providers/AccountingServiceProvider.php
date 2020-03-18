@@ -1,10 +1,10 @@
 <?php
 
-namespace NeptuneSoftware\Invoicable;
+namespace NeptuneSoftware\Invoicable\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Scottlaurent\Accounting\Services\Accounting;
-use Scottlaurent\Accounting\Services\Interfaces\AccountingServiceInterface;
+use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
+use NeptuneSoftware\Accounting\Services\Accounting;
 
 class AccountingServiceProvider extends ServiceProvider
 {
