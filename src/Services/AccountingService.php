@@ -20,17 +20,6 @@ use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
  */
 class AccountingService implements AccountingServiceInterface
 {
-
-    //private $journalModel;
-    /**
-     * RoleService constructor.
-     * @param Journal $journalModel
-     */
-    /*public function __construct(Journal $journalModel)
-    {
-        $this->journalModel = $journalModel;
-    }*/
-
     /**
      * @var array
      */

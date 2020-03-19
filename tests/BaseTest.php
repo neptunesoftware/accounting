@@ -76,6 +76,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 	{
 	    return [
 	         \Orchestra\Database\ConsoleServiceProvider::class,
+            \NeptuneSoftware\Accounting\Providers\AccountingServiceProvider::class
 	    ];
 	}
 	
