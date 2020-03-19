@@ -3,7 +3,7 @@
 // ensure we load our base file (PHPStorm Bug when using remote interpreter )
 require_once ('BaseTest.php');
 
-use NeptuneSoftware\Accounting\Services\AccountingService as AccountingService;
+use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
 use NeptuneSoftware\Accounting\Models\JournalTransaction;
 
 /**
@@ -11,13 +11,19 @@ use NeptuneSoftware\Accounting\Models\JournalTransaction;
  */
 class DoubleEntryTest extends BaseTest
 {
+    private $service;
 
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->service = $this->app->make(AccountingServiceInterface::class);
+    }
     /**
      *
      */
 	public function testMakingSureWeOnlySendDebitOrCreditCommands() {
         $this->expectException(\NeptuneSoftware\Accounting\Exceptions\InvalidJournalMethod::class);
-		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
+		$transaction_group = $this->service->newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'banana',100);
 	}
 
