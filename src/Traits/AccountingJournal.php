@@ -1,12 +1,12 @@
 <?php
 
-namespace Scottlaurent\Accounting\ModelTraits;
+namespace NeptuneSoftware\Accounting\Traits;
 
-use Scottlaurent\Accounting\Models\Journal;
+use NeptuneSoftware\Accounting\Models\Journal;
 
 /**
  * Class AccountingJournal
- * @package Scottlaurent\Accounting\ModelTraits
+ * @package NeptuneSoftware\AccountingService\ModelTraits
  */
 trait AccountingJournal {
 	

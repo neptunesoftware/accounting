@@ -1,12 +1,12 @@
 {
-    "name": "scottlaurent/accounting",
+    "name": "neptunesoftware/accounting",
     "description": "Laravel Accounting Journals for Eloquent Models",
     "license": "MIT",
     "keywords": ["laravel", "accounting"],
     "authors": [
         {
-            "name": "Scott Laurent",
-            "email": "scott@baselineapplications.com"
+            "name": "Neptune Software",
+            "email": "info@neptunyazilim.com"
         }
     ],
     "require": {
@@ -23,7 +23,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Scottlaurent\\Accounting\\": "src/"
+            "NeptuneSoftware\\Accounting\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NeptuneSoftware\\Accounting\\Providers\\AccountingServiceProvider"
+            ]
         }
     }
 }

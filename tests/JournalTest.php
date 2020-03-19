@@ -4,7 +4,7 @@
 require_once ('BaseTest.php');
 
 use Money\Money;
-use Scottlaurent\Accounting\Models\Journal;
+use NeptuneSoftware\Accounting\Models\Journal;
 
 use Models\User;
 use Models\Account;
@@ -76,7 +76,7 @@ class JournalTest extends BaseTest
 		
 		$account = $this->createFakeAccount();
 		$account->initJournal();
-		$account_journal = Account::find(1)->journal;
+		$account_journal = Account::all()->first()->journal;
 		
 		$product = Product::create(['name'=>'Product 1','price'=> mt_rand(1,99999)]);
 		$qty_products = mt_rand(25000,100000);
