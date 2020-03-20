@@ -4,6 +4,7 @@ namespace NeptuneSoftware\Accounting\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use NeptuneSoftware\Accounting\Exceptions\InvalidLedgerType;
 use NeptuneSoftware\Accounting\Exceptions\TransactionCouldNotBeProcessed;
 use NeptuneSoftware\Accounting\Models\Journal;
 use Money\Money;
@@ -13,6 +14,7 @@ use NeptuneSoftware\Accounting\Exceptions\InvalidJournalEntryValue;
 use NeptuneSoftware\Accounting\Exceptions\InvalidJournalMethod;
 use NeptuneSoftware\Accounting\Exceptions\DebitsAndCreditsDoNotEqual;
 use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
+use NeptuneSoftware\Accounting\Models\Ledger;
 
 /**
  * Class AccountingService
@@ -143,5 +145,27 @@ class AccountingService implements AccountingServiceInterface
         if ($credits !== $debits) {
             throw new DebitsAndCreditsDoNotEqual('In this transaction, credits == ' . $credits . ' and debits == ' . $debits);
         }
+    }
+
+    public function addLedger($name , $type)
+    {
+        $types = [
+            Ledger::ASSET,
+            Ledger::LIABILITY,
+            Ledger::EQUITY,
+            Ledger::EXPENSE,
+            Ledger::INCOME,
+        ];
+
+        if (in_array($type, $types)) {
+            $model = Ledger::create([
+                'name' => $name,
+                'type' => $type
+            ]);
+        } else {
+            throw new InvalidLedgerType();
+        }
+
+        return $model;
     }
 }

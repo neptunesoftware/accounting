@@ -12,7 +12,7 @@ use NeptuneSoftware\Accounting\Models\Ledger;
  */
 abstract class BaseTest extends \Orchestra\Testbench\TestCase
 {
-	
+
 	/**
      * Setup the test environment.
      */
@@ -25,7 +25,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 	    
         $this->artisan('migrate', ['--database'=>'testbench','--path'=>'migrations']);
         $this->loadMigrationsFrom(realpath(__DIR__.'/migrations'));
-	    
+
         $this->faker = Faker::create();
         $this->setUpCompanyLedgersAndJournals();
     }
@@ -122,32 +122,12 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 		|--------------------------------------------------------------------------
 		*/
 		
-		$this->company_assets_ledger = Ledger::create([
-			'name' => 'Company Assets',
-			'type' => 'asset'
-        ]);
-		
-		$this->company_liability_ledger = Ledger::create([
-			'name' => 'Company Liabilities',
-			'type' => 'liability'
-        ]);
-		
-		$this->company_equity_ledger = Ledger::create([
-			'name' => 'Company Equity',
-			'type' => 'equity'
-        ]);
-		
-		$this->company_income_ledger = Ledger::create([
-			'name' => 'Company Income',
-			'type' => 'income'
-        ]);
-		
-		$this->company_expense_ledger = Ledger::create([
-			'name' => 'Company Expenses',
-			'type' => 'expense'
-        ]);
-		
-		
+		$this->company_assets_ledger = $this->service->addLedger('Company Assets', Ledger::ASSET);
+		$this->company_liability_ledger = $this->service->addLedger('Company Liabilities', Ledger::LIABILITY);
+		$this->company_equity_ledger = $this->service->addLedger('Company Equity', Ledger::EQUITY);
+		$this->company_income_ledger = $this->service->addLedger('Company Income', Ledger::INCOME);
+		$this->company_expense_ledger = $this->service->addLedger('Company Expenses', Ledger::EXPENSE);
+
 		/*
 		|--------------------------------------------------------------------------
 		| This can be a bit confusing, becasue we are creating a new "company journal"

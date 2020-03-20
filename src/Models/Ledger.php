@@ -20,8 +20,14 @@ use NeptuneSoftware\Accounting\Traits\HasUUID;
 class Ledger extends Model
 {
     use HasUUID;
-	
-	/**
+
+    const ASSET       = 'asset';
+    const LIABILITY   = 'liability';
+    const EQUITY      = 'equity';
+    const INCOME      = 'income';
+    const EXPENSE     = 'expense';
+
+    /**
 	 * @var string
 	 */
 	protected $table = 'accounting_ledgers';

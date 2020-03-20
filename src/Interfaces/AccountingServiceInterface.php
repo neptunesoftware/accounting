@@ -53,4 +53,11 @@ interface AccountingServiceInterface
      * @throws DebitsAndCreditsDoNotEqual
      */
     public function commit(): string;
+
+    /**
+     * @param $name
+     * @param $type
+     * @return mixed
+     */
+    public function addLedger($name , $type);
 }

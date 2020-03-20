@@ -15,7 +15,7 @@ class CreateAccountingLedgersTable extends Migration
         Schema::create('accounting_ledgers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->enum('type', config('accounting.accounting_ledgers.type'));
+            $table->string('type', config('accounting.accounting_ledgers.type'));
             $table->timestamps();
         });
     }
