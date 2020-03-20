@@ -5,7 +5,7 @@ use Faker\Factory as Faker;
 use Models\User;
 use Models\Account;
 use Models\CompanyJournal;
-use Scottlaurent\Accounting\Models\Ledger;
+use NeptuneSoftware\Accounting\Models\Ledger;
 
 /**
  * Class BaseTest
@@ -76,6 +76,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 	{
 	    return [
 	         \Orchestra\Database\ConsoleServiceProvider::class,
+            \NeptuneSoftware\Accounting\Providers\AccountingServiceProvider::class
 	    ];
 	}
 	

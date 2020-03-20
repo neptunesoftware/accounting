@@ -1,6 +1,6 @@
 <?php
 
-namespace Scottlaurent\Accounting\Exceptions;
+namespace NeptuneSoftware\Accounting\Exceptions;
 
 class InvalidJournalEntryValue extends BaseException {
 	

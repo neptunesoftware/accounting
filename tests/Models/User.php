@@ -3,7 +3,8 @@
 namespace Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Scottlaurent\Accounting\ModelTraits\AccountingJournal;
+use Illuminate\Support\Str;
+use NeptuneSoftware\Accounting\Traits\AccountingJournal;
 
 /**
  * Class User
@@ -17,6 +18,21 @@ use Scottlaurent\Accounting\ModelTraits\AccountingJournal;
 class User extends Model
 {
 	use AccountingJournal;
+
+    public $incrementing = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            /**
+             * @var \Illuminate\Database\Eloquent\Model $model
+             */
+            if (!$model->getKey()) {
+                $model->{$model->getKeyName()} = Str::uuid()->toString();
+            }
+        });
+    }
 }
 
 

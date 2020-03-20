@@ -3,7 +3,7 @@
 // ensure we load our base file (PHPStorm Bug when using remote interpreter )
 require_once ('BaseTest.php');
 
-use Scottlaurent\Accounting\Services\Accounting as AccountingService;
+use NeptuneSoftware\Accounting\Interfaces\AccountingServiceInterface;
 
 
 /**
@@ -11,6 +11,13 @@ use Scottlaurent\Accounting\Services\Accounting as AccountingService;
  */
 class LedgerTest extends BaseTest
 {
+    private $service;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->service = $this->app->make(AccountingServiceInterface::class);
+    }
 	
 	/**
 	 *
@@ -43,13 +50,13 @@ class LedgerTest extends BaseTest
 		$user_making_payment = $users[0];
 		$payment_1 = mt_rand(3,30) * 1.0129; // convert us using Faker dollar amounts
 		
-		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
+		$transaction_group = $this->service->newDoubleEntryTransactionGroup();
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',$payment_1,'Payment from User ' . $user_making_payment->id,$user_making_payment);
 		$transaction_group->addDollarTransaction($this->company_ar_journal,'credit',$payment_1,'Payment from User ' . $user_making_payment->id,$user_making_payment);
 		$transaction_group->commit();
 		
 		// customer makes a payment (use double entry service)
-		$transaction_group = AccountingService::newDoubleEntryTransactionGroup();
+		$transaction_group = $this->service->newDoubleEntryTransactionGroup();
 		$payment_2 = mt_rand(3,30) * 1.075;
 		$transaction_group->addDollarTransaction($this->company_cash_journal,'debit',$payment_2,'Payment from User ' . $user_making_payment->id,$user_making_payment);
 		$transaction_group->addDollarTransaction($this->company_ar_journal,'credit',$payment_2,'Payment from User ' . $user_making_payment->id,$user_making_payment);

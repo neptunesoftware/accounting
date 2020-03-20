@@ -1,15 +1,16 @@
 <?php
 
-namespace Scottlaurent\Accounting\Models;
+namespace NeptuneSoftware\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Money\Money;
 use Money\Currency;
 use Carbon\Carbon;
 
 /**
  * Class Journal
- * @package Scottlaurent\Accounting
+ * @package NeptuneSoftware\AccountingService
  * @property    Money                  $balance
  * @property    string                 $currency
  * @property    Carbon                 $updated_at
@@ -18,12 +19,14 @@ use Carbon\Carbon;
  */
 class Journal extends Model
 {
-	
-	/**
-	 * @var string
-	 */
-	protected $table = 'accounting_journals';
-	
+
+    /**
+     * @var string
+     */
+    protected $table = 'accounting_journals';
+
+    public $incrementing = false;
+
     /**
      * Get all of the morphed models.
      */
@@ -54,10 +57,17 @@ class Journal extends Model
 	protected static function boot()
 	{
 		parent::boot();
+        static::creating(function ($model) {
+            /**
+             * @var \Illuminate\Database\Eloquent\Model $model
+             */
+            if (!$model->getKey()) {
+                $model->{$model->getKeyName()} = Str::uuid()->toString();
+            }
+        });
 		static::created(function (Journal $journal) {
 			$journal->resetCurrentBalances();
 		});
-
 		parent::boot();
 	}
 	
