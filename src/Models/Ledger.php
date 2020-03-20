@@ -3,10 +3,10 @@
 namespace NeptuneSoftware\Accounting\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Money\Money;
 use Money\Currency;
 use Carbon\Carbon;
+use NeptuneSoftware\Accounting\Traits\HasUUID;
 
 /**
  * Class Journal
@@ -19,6 +19,7 @@ use Carbon\Carbon;
  */
 class Ledger extends Model
 {
+    use HasUUID;
 	
 	/**
 	 * @var string
@@ -27,21 +28,6 @@ class Ledger extends Model
 	
 	public $currency = 'USD';
 
-    public $incrementing = false;
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            /**
-             * @var \Illuminate\Database\Eloquent\Model $model
-             */
-            if (!$model->getKey()) {
-                $model->{$model->getKeyName()} = Str::uuid()->toString();
-            }
-        });
-    }
-	
 	/**
 	 *
 	 */

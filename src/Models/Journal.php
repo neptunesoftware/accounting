@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Money\Money;
 use Money\Currency;
 use Carbon\Carbon;
+use NeptuneSoftware\Accounting\Traits\HasUUID;
 
 /**
  * Class Journal
@@ -19,13 +20,12 @@ use Carbon\Carbon;
  */
 class Journal extends Model
 {
+    use HasUUID;
 
     /**
      * @var string
      */
     protected $table = 'accounting_journals';
-
-    public $incrementing = false;
 
     /**
      * Get all of the morphed models.
@@ -57,14 +57,6 @@ class Journal extends Model
 	protected static function boot()
 	{
 		parent::boot();
-        static::creating(function ($model) {
-            /**
-             * @var \Illuminate\Database\Eloquent\Model $model
-             */
-            if (!$model->getKey()) {
-                $model->{$model->getKeyName()} = Str::uuid()->toString();
-            }
-        });
 		static::created(function (Journal $journal) {
 			$journal->resetCurrentBalances();
 		});

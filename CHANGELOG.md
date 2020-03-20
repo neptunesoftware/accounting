@@ -8,18 +8,14 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 To follow original repository, please see [scottlaurent/accounting](https://github.com/sandervanhooft/laravel-invoicable).
 
 ## 2020-03-18
-### Added
-- Author names
 ### Changed
-- Namespaces refactored
-- ModelTraits folder's name to Traits
 - Migrations moved to database folder
 
 ## 2020-03-17
 ### Added
 - Interfaces
 - Service layer
-- php.yml 
+- GitHub Actions for build status and auto unit testing.
 ### Changed
 - Upgraded php, laravel and packages versions.
 - id fields from 'integer' to 'uuid'.
