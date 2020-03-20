@@ -1,6 +1,6 @@
 # Laravel (Eloquent) Accounting Package
 
-I am an accountant and a Laravel developer.  I wrote this package to provide a simple drop-in trait to manage accruing balances for a given model.  It can also be used to create double entry based projects where you would want to credit one journal and debit another.
+ this package provide a simple drop-in trait to manage accruing balances for a given model.  It can also be used to create double entry based projects where you would want to credit one journal and debit another.
 
 ** This DOES allow you to keep line-item balances historical debits and credits on a per model object (user, account, whatever) basis
 
@@ -24,7 +24,7 @@ I am an accountant and a Laravel developer.  I wrote this package to provide a s
 
 ## <a name="installation"></a>Installation
 
-1) composer require "scottlaurent/accounting"
+1) composer require "neptunesoftware/accounting"
 
 2) copy the files in the migrations folder over to your migrations and run them.  This will install 3 new tables in your database.  The ledger migration is optional and you should look at SCENARIO C below to determine if you will even use this.
 
@@ -32,7 +32,7 @@ I am an accountant and a Laravel developer.  I wrote this package to provide a s
 
 4) ** most of the time you will want to add the $model->initJournal() into the static::created() method of your model so that a journal is created when you create the model object itself.
 
-5) If using double entry, add Scottlaurent\Accounting\Services\Accounting::class to your service providers
+5) If using double entry, add NeptuneSoftware\Accounting\Services\AccountingService::class to your service providers
 
 
 ## <a name="code-sample"></a>Code Sample
@@ -43,7 +43,7 @@ I am an accountant and a Laravel developer.  I wrote this package to provide a s
     $user = User::find(1);
     
     // locate a product (optional)
-    $product = Product::find(1)
+    $product = Product::find(1);
     
     // init a journal for this user (do this only once)
     $user->initJournal();
@@ -62,7 +62,7 @@ I am an accountant and a Laravel developer.  I wrote this package to provide a s
     $current_balance = $user->journal->getCurrentBalanceInDollars();
     
     //get the product referenced in the journal (optional)
-    $product_copy = $transaction_1->getReferencedObject()
+    $product_copy = $transaction_1->getReferencedObject();
     
 ```
 
@@ -107,9 +107,14 @@ I am an accountant and a Laravel developer.  I wrote this package to provide a s
    
    d. To process a double entry transaction, do something like this:
    
+   ```
+            // serviceInterface must be defined in the class's setUp() method.
+            $this->service = $this->app->make(AccountingServiceInterface::class);
+   ```
+   
     ```
             // this represents some kind of sale to a customer for $500 based on an invoiced ammount of 500.
-            $transaction_group = AccountingService::newDoubleEntryTransactionGroup();
+            $transaction_group = $this-service->newDoubleEntryTransactionGroup();
             $transaction_group->addDollarTransaction($user->journal,'credit',500);  // your user journal probably is an income ledger
             $transaction_group->addDollarTransaction($this->company_accounts_receivable_journal,'debit',500); // this is an asset ledder
             $transaction_group->commit();
@@ -118,7 +123,7 @@ I am an accountant and a Laravel developer.  I wrote this package to provide a s
     
     ```
             // this represents payment in cash to satisy that AR entry
-            $transaction_group = AccountingService::newDoubleEntryTransactionGroup();
+            $transaction_group = $this->service->newDoubleEntryTransactionGroup();
             $transaction_group->addDollarTransaction($this->company_accounts_receivable_journal,'debit',500);
             $transaction_group->addDollarTransaction($this->company_cash_journal,'credit',500);
             $transaction_group->commit();
